@@ -11,7 +11,10 @@ var b4El = document.querySelector('#b4');
 var introEl = document.querySelector("#intro");
 var quizEl = document.querySelector("#quiz");
 
-//Quiz Questions and Answers
+
+//The function below starts the game
+
+//Variable containing the quizes and answers
 var questions = [
 	{
 		question: "What is absolute zero",
@@ -62,3 +65,27 @@ var questions = [
 		answer: "Hamlet"
 	}];
 
+
+//Variables for the timer
+
+var userScore;
+var secondsLeft = 60;
+var questionIndex = 0;
+var timeInt;
+
+//Function below is for when the timer starts
+function startTimer() {
+	timeInt = setInterval(
+		function () {
+			secondsLeft--;
+			timerEl.textContent = `Timer: ${secondsLeft}`;
+			if (secondsLeft === 0) {
+				userScore = 0;
+				clearInterval(timeInt);
+				timerEl.textContent = " ";
+				alert("Your time is up, your score is 0!!");
+				userScore = 0;
+				enterHiSc();
+			}
+		}, 1000);
+};
