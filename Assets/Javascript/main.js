@@ -1,3 +1,4 @@
+//Variables
 var startButton = document.querySelector("#startButton");
 var timerEl = document.querySelector('#timer');
 
@@ -9,4 +10,55 @@ var b4El = document.querySelector('#b4');
 
 var introEl = document.querySelector("#intro");
 var quizEl = document.querySelector("#quiz");
+
+//Quiz Questions and Answers
+var questions = [
+	{
+		question: "What is absolute zero",
+		q1: "0",
+		q2: "zero",
+		q3: "lower temperature that is theorteically possible, -273.10°C",
+		q4: " lower temperature that is theorteically possible, -273.15°C",
+		answer: "lower temperature that is theorteically possible, -273.15°C"
+	},
+	{
+		question: "Do pineapples belong on pizza?",
+		q1: "no",
+		q2: "yes",
+		q3: "YES!",
+		q4: "Big Yes This is the answer :)",
+		answer: "Big Yes This is the answer :)"
+	},
+	{
+		question: "in a website browser address bar, what does “www” stand for?",
+		q1: "World Wide Web",
+		q2: "World Web Wide",
+		q3: "Wide web World",
+		q4: "Web World Wide",
+		answer: "World Wide Web"
+	},
+	{
+		question: "According to Greek mythology, who was the first woman on earth?",
+		q1: "Aphrodite",
+		q2: "Pandora",
+		q3: "Hera",
+		q4: "KRATOS ",
+		answer: "Pandora"
+	},
+	{
+		question: "Which country consumes the most chocolate per capita?",
+		q1: "America",
+		q2: "Australia",
+		q3: "Switzerland",
+		q4: "Denmark",
+		answer: "Switzerland"
+	},
+	{
+		question: "Which of Shakespeare’s plays is the longest?",
+		q1: "Macbeth",
+		q2: "Hamlet",
+		q3: "The Tempest ",
+		q4: "Much Ado about Nothing",
+		answer: "Hamlet"
+	}];
 
