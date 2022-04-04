@@ -13,6 +13,14 @@ var quizEl = document.querySelector("#quiz");
 
 
 //The function below starts the game
+startButton.addEventListener("click", startQuiz);
+function startQuiz() {
+	userScore = 0;
+	startTimer();
+	introEl.setAttribute("style", "display: none");
+	quizEl.setAttribute("style", "display: block");
+	loadQuestions();
+};
 
 //Variable containing the quizes and answers
 var questions = [
