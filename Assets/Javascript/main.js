@@ -22,23 +22,49 @@ function startQuiz() {
 	loadQuestions();
 };
 
+//Variables for the timer
+
+var userScore;
+var secondsLeft = 60;
+var questionIndex = 0;
+var timeInt;
+
+//Function below is for when the timer starts
+function startTimer() {
+	timeInt = setInterval(
+		function () {
+			secondsLeft--;
+			timerEl.textContent = `Timer: ${secondsLeft}`;
+			if (secondsLeft === 0) {
+				userScore = 0;
+				clearInterval(timeInt);
+				timerEl.textContent = " ";
+				alert("Your time is up, your score is 0!!");
+				userScore = 0;
+				enterHiSc();
+			}
+		}, 1000);
+};
+
+
 //Variable containing the quizes and answers
 var questions = [
 	{
-		question: "What is absolute zero",
+		question: "What is the value of absolute zero",
 		q1: "0",
 		q2: "zero",
-		q3: "lower temperature that is theorteically possible, -273.10°C",
-		q4: " lower temperature that is theorteically possible, -273.15°C",
-		answer: "lower temperature that is theorteically possible, -273.15°C"
+		q3: "-273.10°C",
+		q4: "-273.15°C",
+		answer: "-273.15°C"
 	},
 	{
 		question: "Do pineapples belong on pizza?",
 		q1: "no",
 		q2: "yes",
 		q3: "YES!",
-		q4: "Big Yes This is the answer :)",
-		answer: "Big Yes This is the answer :)"
+		q4: "YES!!",
+		answer: "YES!!",
+	
 	},
 	{
 		question: "in a website browser address bar, what does “www” stand for?",
@@ -74,26 +100,48 @@ var questions = [
 	}];
 
 
-//Variables for the timer
+// The below function loads the questions
+function loadQuestions() {
+	questionEl.textContent = questions[questionIndex].question;
+	b1El.textContent = `${questions[questionIndex].q1}`;
+	b2El.textContent = `${questions[questionIndex].q2}`;
+	b3El.textContent = `${questions[questionIndex].q3}`;
+	b4El.textContent = `${questions[questionIndex].q4}`;
+};
 
-var userScore;
-var secondsLeft = 60;
-var questionIndex = 0;
-var timeInt;
-
-//Function below is for when the timer starts
-function startTimer() {
-	timeInt = setInterval(
-		function () {
-			secondsLeft--;
-			timerEl.textContent = `Timer: ${secondsLeft}`;
-			if (secondsLeft === 0) {
+//The query selector below is based on the users inputs
+var wrongEl = document.querySelector("#wrong");
+quizEl.addEventListener("click", function (event) {
+	var element = event.target;
+	if (element.matches(".quizB")) {
+		var check = element.innerText;
+		if (check === questions[questionIndex].answer) {
+			secondsLeft = secondsLeft + 5;
+			alert("Correct! You have gained 5 additional seconds :D");
+			wrongEl.textContent = " ";
+			//Run through the questions
+			var qLength = questions.length - 1;
+			if (questionIndex < qLength) {
+				questionIndex++;
+				loadQuestions();
+			} else {
+				//Ran through all the questions - finish
+				alert("All Done!");
+				userScore = secondsLeft;
+				clearInterval(timeInt);
+				timerEl.textContent = " ";
+				enterHiSc();
+			}
+		} else {
+			secondsLeft = secondsLeft - 5;
+			wrongEl.textContent = "Incorrect! You have lost 5 seconds D:";
+			if (secondsLeft <= 0) {
 				userScore = 0;
 				clearInterval(timeInt);
 				timerEl.textContent = " ";
-				alert("Your time is up, your score is 0!!");
-				userScore = 0;
+				alert("Ran out of time!");
 				enterHiSc();
 			}
-		}, 1000);
-};
+		}
+	}
+});
