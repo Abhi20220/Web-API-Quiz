@@ -42,7 +42,7 @@ The following images show the web application's appearance and functionality:
 ![High Score Page](./Assets/Images/High%20Score%20Screen.jpg)
 
 
-The following are prompts, alerts and points of interests for the client
+## The following are features, prompts, alerts and points of interests for the client
 
 ![Incorrect answer input](./Assets/Images/incorrect%20answer%20show%20up.jpg)
 
