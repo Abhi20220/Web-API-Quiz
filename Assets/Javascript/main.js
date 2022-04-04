@@ -95,7 +95,7 @@ var questions = [
 		q1: "Macbeth",
 		q2: "Hamlet",
 		q3: "The Tempest ",
-		q4: "Much Ado about Nothing",
+		q4: "Romeo and Juliet",
 		answer: "Hamlet"
 	}];
 
@@ -145,3 +145,4 @@ quizEl.addEventListener("click", function (event) {
 		}
 	}
 });
+
