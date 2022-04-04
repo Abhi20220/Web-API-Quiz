@@ -1,6 +1,7 @@
 html {
     font-family: "grape nuts","sans-serif";
     font-size: 12px;
+	background-color: rgb(108, 221, 221);
 }
 nav {
 	margin: 2rem;
@@ -49,8 +50,8 @@ button {
 	text-align: center;
 }
 button:hover {
-	background-color: ghostwhite;
-	border-color: crimson;
+	background-color: rgb(122, 224, 135);
+	border-color: rgb(90, 179, 198);
 }
 
 h2 {
@@ -138,7 +139,7 @@ h2 {
 }
 
 .highScore {
-	color: crimson;
+	color: rgb(178, 109, 238);
 	font-size: 4rem;
 	margin-bottom: 2rem;
 }

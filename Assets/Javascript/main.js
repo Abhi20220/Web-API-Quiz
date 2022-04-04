@@ -145,4 +145,51 @@ quizEl.addEventListener("click", function (event) {
 		}
 	}
 });
+// Additional Variables
+var mainEl = document.querySelector('main');
+var sectionEl = document.createElement("section");
+var h1El = document.createElement("h1");
+var h2El = document.createElement("h2");
+var labelEl = document.createElement("label");
+var inputEl = document.createElement("input");
+var buttonEl = document.createElement("button");
 
+// Below function is for the enter hiscore segment which pops up
+function enterHiSc() {
+	quizEl.setAttribute("style", "display: none");
+
+	mainEl.appendChild(sectionEl);
+	sectionEl.appendChild(h1El);
+	sectionEl.appendChild(h2El);
+	sectionEl.appendChild(labelEl);
+	sectionEl.appendChild(inputEl);
+	sectionEl.appendChild(buttonEl);
+
+	sectionEl.setAttribute("class", "sectionEl");
+	h1El.setAttribute("class", "h1El");
+	h2El.setAttribute("class", "h2El");
+	labelEl.setAttribute("class", "labelEl");
+	inputEl.setAttribute("class", "inputEl");
+	inputEl.setAttribute("placeholder", "...");
+	buttonEl.setAttribute("class", "buttonEl");
+
+	h1El.textContent = "Thanks for playing!";
+	h2El.textContent = `Your score is ${userScore}.`;
+	labelEl.textContent = "Please enter your initials: ";
+	buttonEl.textContent = "Post";
+
+	//Event listener saves values into an array
+	buttonEl.addEventListener("click", function (event) {
+		event.preventDefault();
+		var highScore =JSON.parse(localStorage.getItem("highScores")) || [];
+
+		var highScores = {
+			name: inputEl.value.trim(),
+			score: userScore
+		};
+
+		highScore.push(highScores);
+
+		localStorage.setItem("highScores", JSON.stringify(highScore));
+	});
+};
